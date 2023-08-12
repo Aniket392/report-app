@@ -32,7 +32,7 @@ class ReportDetailView(LoginRequiredMixin,DetailView):
     model=Report
     template_name="reports/detail.html"
 
-class UploadReportView(TemplateView):
+class UploadReportView(LoginRequiredMixin,TemplateView):
     template_name = "reports/from_file.html"
 
 
