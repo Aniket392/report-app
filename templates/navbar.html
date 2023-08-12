@@ -9,6 +9,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{path_to_home}}"><img src = "{% static 'logo.png' %}" class = "logo-sm"></a>
+      {% if request.user.is_authenticated %}
+      <div class="nav-item dropdown order-lg-1">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src = "{{request.user.profile.avatar.url}}" class = "avatar-sm">
+          &nbsp;{{request.user}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item  {% if request.path  == path_to_profile%}active{% endif %}" href="{{path_to_profile}}">Profile</a></li>
+              <li><a class="dropdown-item" href="{{path_to_logout}}">Logout</a></li>
+          </ul>
+      </div>
+    {% endif %}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navnarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
       <div class="collapse navbar-collapse" id="navnarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -26,18 +41,5 @@
           </li>
         </ul>
       </div>
-
-      {% if request.user.is_authenticated %}
-        <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src = "{{request.user.profile.avatar.url}}" class = "avatar-sm">
-            &nbsp;{{request.user}}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item  {% if request.path  == path_to_profile%}active{% endif %}" href="{{path_to_profile}}">Profile</a></li>
-                <li><a class="dropdown-item" href="{{path_to_logout}}">Logout</a></li>
-            </ul>
-        </div>
-    {% endif %}
     </div>
   </nav>
