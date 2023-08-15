@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import login_view, logout_view
+from .views import login_view, logout_view, register_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +27,7 @@ urlpatterns = [
     path('my_profile/', include('profiles.urls', namespace='profiles')),
     path('login/', login_view, name = "login"),
     path('logout/', logout_view, name = "logout"),
+    path('register/', register_view, name = "register"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATICFILES_DIRS)
