@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from reports_proj.settings import ADMIN_URL
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -22,7 +23,7 @@ from .views import login_view, logout_view, register_view
 from ajax_select import urls as ajax_select_urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(ADMIN_URL, admin.site.urls),
     path('', include('sales.urls', namespace='sales')),
     path('reports/', include('reports.urls', namespace='reports')),
     path('my_profile/', include('profiles.urls', namespace='profiles')),
