@@ -51,7 +51,8 @@ INSTALLED_APPS = [
 
     #3rd Party
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'ajax_select'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

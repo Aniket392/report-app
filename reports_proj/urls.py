@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import login_view, logout_view, register_view
+from ajax_select import urls as ajax_select_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('login/', login_view, name = "login"),
     path('logout/', logout_view, name = "logout"),
     path('register/', register_view, name = "register"),
+    path(r'^ajax_select', include(ajax_select_urls)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATICFILES_DIRS)
